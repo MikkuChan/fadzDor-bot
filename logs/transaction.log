@@ -1,0 +1,36 @@
+{
+  service: 'fadzDor-bot',
+  category: 'transaction',
+  trxId: 'TRX-1753084651347-emzplimo8',
+  details: '',
+  level: 'info',
+  message: 'PURCHASE_STARTED - User: 6285727035336@s.whatsapp.net - Amount: 4500 - Status: PROCESSING',
+  timestamp: '2025-07-21 07:57:31'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'transaction',
+  trxId: 'TRX-1753084651347-emzplimo8',
+  details: '',
+  level: 'info',
+  message: 'PURCHASE_FAILED - User: 6285727035336@s.whatsapp.net - Amount: 4500 - Status: FAILED',
+  timestamp: '2025-07-21 07:57:31'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'transaction',
+  trxId: 'TRX-1753092680969-lefs43qpv',
+  details: '',
+  level: 'info',
+  message: 'PURCHASE_STARTED - User: 6285727035336@s.whatsapp.net - Amount: 10000 - Status: PROCESSING',
+  timestamp: '2025-07-21 10:11:20'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'transaction',
+  trxId: 'TRX-1753092680969-lefs43qpv',
+  details: '',
+  level: 'info',
+  message: 'PURCHASE_FAILED - User: 6285727035336@s.whatsapp.net - Amount: 10000 - Status: FAILED',
+  timestamp: '2025-07-21 10:11:21'
+}

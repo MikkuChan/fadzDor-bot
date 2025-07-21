@@ -1,0 +1,42 @@
+{
+  "vidio_dana": {
+    "code": "XLUNLITURBOVIDIO_DANA",
+    "package_id": "ZVdMVXcyKzdJRlJERVdJc1hpVUhmQQ",
+    "name": "Paket Vidio Unlimited (DANA/QRIS)",
+    "price": 4500,
+    "cost": 1500,
+    "description": "• Unlimited Turbo Vidio 30 Hari\n• FUP 100-150GB\n• Bisa untuk VPN\n• Pembayaran via DANA/QRIS",
+    "payment_method": [
+      "DANA",
+      "QRIS"
+    ],
+    "active": true,
+    "updatedAt": "2025-07-21T06:19:17.216Z"
+  },
+  "vidio_pulsa": {
+    "code": "XLUNLITURBOVIDIO_PULSA",
+    "package_id": "MTJLR28vN3VpUmxObFdHelZwRnVUUQ",
+    "name": "Paket Vidio Unlimited (Pulsa)",
+    "price": 4500,
+    "cost": 1500,
+    "description": "• Unlimited Turbo Vidio 30 Hari\n• FUP 100-150GB\n• Bisa untuk VPN\n• Pembayaran via Pulsa",
+    "payment_method": [
+      "PULSA"
+    ],
+    "active": true,
+    "updatedAt": "2025-07-21T06:19:17.216Z"
+  },
+  "masa_aktif": {
+    "code": "1447d54e21d581c9fb340e1cbf4e8fca",
+    "package_id": "RjFNd09ZVWdsQVhQRHRQMWk0bnFxQQ",
+    "name": "Masa Aktif 1 Tahun",
+    "price": 10000,
+    "cost": 5000,
+    "description": "• Masa Aktif 1 Tahun (45GB)\n• Diperpanjang per bulan\n• Pembayaran via Pulsa",
+    "payment_method": [
+      "PULSA"
+    ],
+    "active": true,
+    "updatedAt": "2025-07-21T06:19:17.216Z"
+  }
+}

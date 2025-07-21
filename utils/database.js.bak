@@ -1,0 +1,456 @@
+// utils/database.js
+// Multi-Database Manager (JSON, SQLite, MySQL)
+
+const fs = require('fs').promises;
+const path = require('path');
+const { logSystemError } = require('./logger');
+
+class DatabaseManager {
+  constructor() {
+    this.dbType = process.env.DATABASE_TYPE || 'json'; // default: json
+    this.adapter = null;
+    this.init();
+  }
+
+  async init() {
+    try {
+      await this.ensureDirectories();
+      
+      switch (this.dbType.toLowerCase()) {
+        case 'sqlite':
+          const SQLiteAdapter = require('./sqliteAdapter');
+          this.adapter = new SQLiteAdapter(process.env.DB_PATH);
+          break;
+          
+        case 'mysql':
+          // Future: MySQL adapter
+          throw new Error('MySQL adapter not implemented yet');
+          
+        case 'json':
+        default:
+          this.adapter = this; // Use built-in JSON methods
+          break;
+      }
+      
+      console.log(`✅ Database initialized: ${this.dbType.toUpperCase()}`);
+    } catch (error) {
+      logSystemError(error, 'Database initialization');
+      throw error;
+    }
+  }
+
+  async ensureDirectories() {
+    try {
+      await fs.mkdir('./data', { recursive: true });
+      await fs.mkdir('./logs', { recursive: true });
+      await fs.mkdir('./backup', { recursive: true });
+    } catch (error) {
+      logSystemError(error, 'Creating directories');
+    }
+  }
+
+  // Proxy methods - redirect to appropriate adapter
+  async getUser(phoneNumber) {
+    if (this.adapter !== this) {
+      return this.adapter.getUser(phoneNumber);
+    }
+    return this._jsonGetUser(phoneNumber);
+  }
+
+  async createUser(phoneNumber) {
+    if (this.adapter !== this) {
+      return this.adapter.createUser(phoneNumber);
+    }
+    return this._jsonCreateUser(phoneNumber);
+  }
+
+  async updateUserSaldo(phoneNumber, amount, type = 'add') {
+    if (this.adapter !== this) {
+      return this.adapter.updateUserSaldo(phoneNumber, amount, type);
+    }
+    return this._jsonUpdateUserSaldo(phoneNumber, amount, type);
+  }
+
+  async getAllUsers() {
+    if (this.adapter !== this) {
+      return this.adapter.getAllUsers();
+    }
+    return this._jsonGetAllUsers();
+  }
+
+  async saveTransaction(transactionData) {
+    if (this.adapter !== this) {
+      return this.adapter.saveTransaction(transactionData);
+    }
+    return this._jsonSaveTransaction(transactionData);
+  }
+
+  async getTransaction(trxId) {
+    if (this.adapter !== this) {
+      return this.adapter.getTransaction(trxId);
+    }
+    return this._jsonGetTransaction(trxId);
+  }
+
+  async updateTransactionStatus(trxId, status, additionalData = {}) {
+    if (this.adapter !== this) {
+      return this.adapter.updateTransactionStatus(trxId, status, additionalData);
+    }
+    return this._jsonUpdateTransactionStatus(trxId, status, additionalData);
+  }
+
+  async getUserTransactions(phoneNumber, limit = 10) {
+    if (this.adapter !== this) {
+      return this.adapter.getUserTransactions(phoneNumber, limit);
+    }
+    return this._jsonGetUserTransactions(phoneNumber, limit);
+  }
+
+  async saveSession(phoneNumber, accessToken, authId = null) {
+    if (this.adapter !== this) {
+      return this.adapter.saveSession(phoneNumber, accessToken, authId);
+    }
+    return this._jsonSaveSession(phoneNumber, accessToken, authId);
+  }
+
+  async getSession(phoneNumber) {
+    if (this.adapter !== this) {
+      return this.adapter.getSession(phoneNumber);
+    }
+    return this._jsonGetSession(phoneNumber);
+  }
+
+  async updateSessionLastUsed(phoneNumber) {
+    if (this.adapter !== this) {
+      return this.adapter.updateSessionLastUsed(phoneNumber);
+    }
+    return this._jsonUpdateSessionLastUsed(phoneNumber);
+  }
+
+  async deleteSession(phoneNumber) {
+    if (this.adapter !== this) {
+      return this.adapter.deleteSession(phoneNumber);
+    }
+    return this._jsonDeleteSession(phoneNumber);
+  }
+
+  // JSON Database Methods (Original Implementation)
+  async readFile(filename) {
+    try {
+      const data = await fs.readFile(filename, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        return {};
+      }
+      logSystemError(error, `Reading file: ${filename}`);
+      return {};
+    }
+  }
+
+  async writeFile(filename, data) {
+    try {
+      await fs.writeFile(filename, JSON.stringify(data, null, 2));
+      return true;
+    } catch (error) {
+      logSystemError(error, `Writing file: ${filename}`);
+      return false;
+    }
+  }
+
+  // JSON implementations with _json prefix
+  async _jsonGetUser(phoneNumber) {
+    const users = await this.readFile('./data/users.json');
+    return users[phoneNumber] || null;
+  }
+
+  async _jsonCreateUser(phoneNumber) {
+    const users = await this.readFile('./data/users.json');
+    const newUser = {
+      phoneNumber,
+      saldo: 0,
+      totalTransaksi: 0,
+      registeredAt: new Date().toISOString(),
+      lastActivity: new Date().toISOString(),
+      sessions: {}
+    };
+    users[phoneNumber] = newUser;
+    await this.writeFile('./data/users.json', users);
+    return newUser;
+  }
+
+  async _jsonUpdateUserSaldo(phoneNumber, amount, type = 'add') {
+    const users = await this.readFile('./data/users.json');
+    if (!users[phoneNumber]) {
+      users[phoneNumber] = await this._jsonCreateUser(phoneNumber);
+    }
+    
+    if (type === 'add') {
+      users[phoneNumber].saldo += amount;
+    } else if (type === 'subtract') {
+      users[phoneNumber].saldo -= amount;
+    } else {
+      users[phoneNumber].saldo = amount;
+    }
+    
+    users[phoneNumber].lastActivity = new Date().toISOString();
+    await this.writeFile('./data/users.json', users);
+    return users[phoneNumber];
+  }
+
+  async _jsonGetAllUsers() {
+    return await this.readFile('./data/users.json');
+  }
+
+  async _jsonSaveTransaction(transactionData) {
+    const transactions = await this.readFile('./data/transactions.json');
+    const trxId = transactionData.trxId || `TRX-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    
+    transactions[trxId] = {
+      ...transactionData,
+      trxId,
+      createdAt: new Date().toISOString()
+    };
+    
+    await this.writeFile('./data/transactions.json', transactions);
+    return transactions[trxId];
+  }
+
+  async _jsonGetTransaction(trxId) {
+    const transactions = await this.readFile('./data/transactions.json');
+    return transactions[trxId] || null;
+  }
+
+  async _jsonUpdateTransactionStatus(trxId, status, additionalData = {}) {
+    const transactions = await this.readFile('./data/transactions.json');
+    if (transactions[trxId]) {
+      transactions[trxId].status = status;
+      transactions[trxId].updatedAt = new Date().toISOString();
+      Object.assign(transactions[trxId], additionalData);
+      await this.writeFile('./data/transactions.json', transactions);
+      return transactions[trxId];
+    }
+    return null;
+  }
+
+  async _jsonGetUserTransactions(phoneNumber, limit = 10) {
+    const transactions = await this.readFile('./data/transactions.json');
+    return Object.values(transactions)
+      .filter(tx => tx.phoneNumber === phoneNumber)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, limit);
+  }
+
+  async _jsonSaveSession(phoneNumber, accessToken, authId = null) {
+    const sessions = await this.readFile('./data/sessions.json');
+    sessions[phoneNumber] = {
+      accessToken,
+      authId,
+      createdAt: new Date().toISOString(),
+      lastUsed: new Date().toISOString()
+    };
+    await this.writeFile('./data/sessions.json', sessions);
+    return sessions[phoneNumber];
+  }
+
+  async _jsonGetSession(phoneNumber) {
+    const sessions = await this.readFile('./data/sessions.json');
+    return sessions[phoneNumber] || null;
+  }
+
+  async _jsonUpdateSessionLastUsed(phoneNumber) {
+    const sessions = await this.readFile('./data/sessions.json');
+    if (sessions[phoneNumber]) {
+      sessions[phoneNumber].lastUsed = new Date().toISOString();
+      await this.writeFile('./data/sessions.json', sessions);
+    }
+  }
+
+  async _jsonDeleteSession(phoneNumber) {
+    const sessions = await this.readFile('./data/sessions.json');
+    delete sessions[phoneNumber];
+    await this.writeFile('./data/sessions.json', sessions);
+  }
+
+  // Package Management (JSON only for now)
+  async getPackages() {
+    return await this.readFile('./data/packages.json');
+  }
+
+  async savePackage(packageData) {
+    const packages = await this.readFile('./data/packages.json');
+    packages[packageData.code] = {
+      ...packageData,
+      updatedAt: new Date().toISOString()
+    };
+    await this.writeFile('./data/packages.json', packages);
+    return packages[packageData.code];
+  }
+
+  async deletePackage(packageCode) {
+    const packages = await this.readFile('./data/packages.json');
+    delete packages[packageCode];
+    await this.writeFile('./data/packages.json', packages);
+    return true;
+  }
+
+  // Backup & Migration
+  async backup() {
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    
+    if (this.dbType === 'sqlite' && this.adapter !== this) {
+      // SQLite backup
+      const backupPath = `./backup/fadzDor_${timestamp}.db`;
+      this.adapter.backup(backupPath);
+    } else {
+      // JSON backup
+      const backupDir = `./backup/backup_${timestamp}`;
+      await fs.mkdir(backupDir, { recursive: true });
+      
+      const files = ['users.json', 'transactions.json', 'sessions.json', 'packages.json'];
+      for (const file of files) {
+        try {
+          await fs.copyFile(`./data/${file}`, `${backupDir}/${file}`);
+        } catch (error) {
+          // File mungkin belum ada, skip
+        }
+      }
+    }
+    
+    console.log(`✅ Database backup completed: ${timestamp}`);
+  }
+
+  // Migration tools
+  async migrateToSQLite() {
+    if (this.dbType === 'sqlite') {
+      console.log('Already using SQLite');
+      return;
+    }
+
+    try {
+      const SQLiteAdapter = require('./sqliteAdapter');
+      const sqliteAdapter = new SQLiteAdapter();
+      
+      // Migrate users
+      const users = await this.readFile('./data/users.json');
+      for (const [phone, user] of Object.entries(users)) {
+        await sqliteAdapter.createUser(phone);
+        await sqliteAdapter.updateUserSaldo(phone, user.saldo, 'set');
+      }
+      
+      // Migrate transactions
+      const transactions = await this.readFile('./data/transactions.json');
+      for (const tx of Object.values(transactions)) {
+        await sqliteAdapter.saveTransaction(tx);
+      }
+      
+      // Migrate sessions
+      const sessions = await this.readFile('./data/sessions.json');
+      for (const [phone, session] of Object.entries(sessions)) {
+        await sqliteAdapter.saveSession(phone, session.accessToken, session.authId);
+      }
+      
+      console.log('✅ Migration to SQLite completed');
+      console.log('To use SQLite, set DATABASE_TYPE=sqlite in .env and restart bot');
+      
+    } catch (error) {
+      logSystemError(error, 'Migration to SQLite');
+    }
+  }
+}
+
+module.exports = new DatabaseManager();actionData) {
+    const transactions = await this.readFile('./data/transactions.json');
+    const trxId = transactionData.trxId || `TRX-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    
+    transactions[trxId] = {
+      ...transactionData,
+      trxId,
+      createdAt: new Date().toISOString()
+    };
+    
+    await this.writeFile('./data/transactions.json', transactions);
+    return transactions[trxId];
+  }
+
+  async getTransaction(trxId) {
+    const transactions = await this.readFile('./data/transactions.json');
+    return transactions[trxId] || null;
+  }
+
+  async updateTransactionStatus(trxId, status, additionalData = {}) {
+    const transactions = await this.readFile('./data/transactions.json');
+    if (transactions[trxId]) {
+      transactions[trxId].status = status;
+      transactions[trxId].updatedAt = new Date().toISOString();
+      Object.assign(transactions[trxId], additionalData);
+      await this.writeFile('./data/transactions.json', transactions);
+      return transactions[trxId];
+    }
+    return null;
+  }
+
+  async getUserTransactions(phoneNumber, limit = 10) {
+    const transactions = await this.readFile('./data/transactions.json');
+    return Object.values(transactions)
+      .filter(tx => tx.phoneNumber === phoneNumber)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, limit);
+  }
+
+  // Session Management untuk OTP
+  async saveSession(phoneNumber, accessToken, authId = null) {
+    const sessions = await this.readFile('./data/sessions.json');
+    sessions[phoneNumber] = {
+      accessToken,
+      authId,
+      createdAt: new Date().toISOString(),
+      lastUsed: new Date().toISOString()
+    };
+    await this.writeFile('./data/sessions.json', sessions);
+    return sessions[phoneNumber];
+  }
+
+  async getSession(phoneNumber) {
+    const sessions = await this.readFile('./data/sessions.json');
+    return sessions[phoneNumber] || null;
+  }
+
+  async updateSessionLastUsed(phoneNumber) {
+    const sessions = await this.readFile('./data/sessions.json');
+    if (sessions[phoneNumber]) {
+      sessions[phoneNumber].lastUsed = new Date().toISOString();
+      await this.writeFile('./data/sessions.json', sessions);
+    }
+  }
+
+  async deleteSession(phoneNumber) {
+    const sessions = await this.readFile('./data/sessions.json');
+    delete sessions[phoneNumber];
+    await this.writeFile('./data/sessions.json', sessions);
+  }
+
+  // Package Management (untuk admin CRUD)
+  async getPackages() {
+    return await this.readFile('./data/packages.json');
+  }
+
+  async savePackage(packageData) {
+    const packages = await this.readFile('./data/packages.json');
+    packages[packageData.code] = {
+      ...packageData,
+      updatedAt: new Date().toISOString()
+    };
+    await this.writeFile('./data/packages.json', packages);
+    return packages[packageData.code];
+  }
+
+  async deletePackage(packageCode) {
+    const packages = await this.readFile('./data/packages.json');
+    delete packages[packageCode];
+    await this.writeFile('./data/packages.json', packages);
+    return true;
+  }
+}
+
+module.exports = new DatabaseManager();

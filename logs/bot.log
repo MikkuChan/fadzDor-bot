@@ -1,0 +1,1564 @@
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:48:38'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:48:38'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:48:38'
+}
+{
+  message: 'QR Code generated, please scan to login',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:48:39'
+}
+{
+  message: 'Connection closed: Stream Errored (restart required)',
+  level: 'error',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:49:30'
+}
+{
+  message: 'Reconnecting in 3 seconds... (attempt 1/5)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:49:30'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:49:33'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:49:35'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:49:35'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 06:49:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 06:49:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.meni',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:50:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.meni',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:50:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.saldo',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:50:46'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.saldo',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:50:46'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket 087784054056',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:51:24'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket 087784054056',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:51:24'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:51:48'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:51:48'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '087784054056',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:52:01'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '087784054056',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:52:01'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:56:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:56:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:57:10'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:57:10'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.stats',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:04:41'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.stats',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:04:41'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.topuser',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:06:04'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.topuser',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:06:04'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:06:08'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:06:08'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.topuser',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:06:13'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.topuser',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:06:13'
+}
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:09:04'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:09:04'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:09:04'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:09:05'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:09:05'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:09:05'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 07:09:05'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpakey',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:15'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpakey',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:15'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:19'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:19'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:30'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:30'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.admin',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:33'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.admin',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:33'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'admin',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:39'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'admin',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:39'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.start',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:43'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.start',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:43'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addsaldo',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addsaldo',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:09:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addsaldo 6285727035336 100000',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:10:27'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addsaldo 6285727035336 100000',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:10:27'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addsaldo',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:10:33'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addsaldo',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:10:33'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.riwayat',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:03'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.riwayat',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:03'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:11'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:11'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:13'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:13'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.start',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:16'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.start',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:16'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:22'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:22'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:31'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:31'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldo',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:37'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldo',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:37'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldosystem',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:46'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldosystem',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:12:46'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldosistem',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:13:02'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldosistem',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:13:02'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '!stats',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:33:30'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '!stats',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:33:30'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.stats',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:33:37'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.stats',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:33:37'
+}
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:47:23'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:47:23'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:47:23'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:47:24'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:47:24'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:47:24'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 07:47:24'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.saldo',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:47:39'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.saldo',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:47:39'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:47:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:47:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:48:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:48:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:49:01'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:49:01'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.saldo',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:07'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.saldo',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:07'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.admin',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:12'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.admin',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:12'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.user',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:16'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.user',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:16'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:48'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:48'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '085921416239',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:52:02'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '085921416239',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:52:02'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6285921416239',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:52:12'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6285921416239',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:52:12'
+}
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:56:53'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:56:53'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:56:53'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:56:54'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:56:54'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 07:56:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 07:56:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6285921416239',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:08'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6285921416239',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:08'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:15'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:15'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:17'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:17'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6285921416239',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:20'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6285921416239',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:20'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'ya',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:31'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'ya',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:31'
+}
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:22:53'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:22:53'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:22:53'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:22:55'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:22:55'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:22:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 09:22:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldosistem',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:05'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.ceksaldosistem',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:05'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:14'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.menu',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:14'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaker',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:21'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaker',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:21'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:24'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.addpaket',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:24'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:46'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:46'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'batal',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'batal',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:23:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket 087784054056',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:24:18'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket 087784054056',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:24:18'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:24:29'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.cekpaket',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:24:29'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '087784054056',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:24:33'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '087784054056',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:24:33'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.otp',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:22'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.otp',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:22'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:28'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:28'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:39'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '1',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:39'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '2',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:44'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '2',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:44'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'batal',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'batal',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:25:58'
+}
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:39:51'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:39:51'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:39:51'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:39:52'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:39:52'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 09:39:52'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 09:39:52'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:39:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:39:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:40:17'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:40:17'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6287722827168',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:40:34'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '6287722827168',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:40:34'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'ya',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:40:42'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'ya',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:40:42'
+}
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 10:10:24'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 10:10:24'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 10:10:24'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 10:10:25'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 10:10:25'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 10:10:25'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 10:10:25'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:10:36'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.beli',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:10:36'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '4',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:10:45'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '4',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:10:45'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '087722827168',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:11:11'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '087722827168',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:11:11'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'ya',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:11:20'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'ya',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:11:20'
+}
+{
+  message: '✅ Configuration validation passed',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 14:06:52'
+}
+{
+  message: '✅ fadzDor startup completed successfully',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 14:06:52'
+}
+{
+  message: 'Connecting to WhatsApp...',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 14:06:52'
+}
+{
+  message: '🚀 fadzDor successfully connected to WhatsApp!',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 14:06:54'
+}
+{
+  message: '📞 Owner: 6285727035336',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 14:06:54'
+}
+{
+  message: '👨‍💼 Admins: 2 admin(s)',
+  level: 'info',
+  service: 'fadzDor-bot',
+  category: 'bot',
+  timestamp: '2025-07-21 14:06:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: 'Bot successfully connected to WhatsApp',
+  level: 'info',
+  message: 'BOT_CONNECTED - User: system',
+  timestamp: '2025-07-21 14:06:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.admin',
+  level: 'info',
+  message: 'MESSAGE_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 14:07:19'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'bot',
+  details: '.admin',
+  level: 'info',
+  message: 'COMMAND_RECEIVED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 14:07:19'
+}

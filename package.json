@@ -1,0 +1,43 @@
+{
+  "name": "fadzDor-bot",
+  "version": "2.0.0",
+  "description": "Bot WhatsApp untuk layanan paket data otomatis",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "setup": "node scripts/setup.js",
+    "monitor": "node scripts/monitor.js",
+    "logs": "tail -f logs/bot.log",
+    "logs:tx": "tail -f logs/transaction.log",
+    "logs:error": "tail -f logs/error.log",
+    "clear-logs": "rm -rf logs/*.log",
+    "backup-data": "cp -r data/ backup/data-$(date +%Y%m%d-%H%M%S)/",
+    "test-api": "node scripts/test-api.js",
+    "health-check": "node scripts/health-check.js",
+    "db:info": "node scripts/database-migration.js info",
+    "db:backup": "node scripts/database-migration.js backup"
+  },
+  "dependencies": {
+    "baileys": "^6.7.8",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "form-data": "^4.0.0",
+    "pino": "^9.4.0",
+    "qrcode-terminal": "^0.12.0",
+    "winston": "^3.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "paket-data"
+  ],
+  "author": "fadzdigital",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

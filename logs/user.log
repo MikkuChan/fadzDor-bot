@@ -1,0 +1,56 @@
+{
+  service: 'fadzDor-bot',
+  category: 'user',
+  details: '',
+  level: 'info',
+  message: 'USER_REGISTERED - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:50:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'user',
+  details: 'Saldo: 0',
+  level: 'info',
+  message: 'CHECK_BALANCE - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 06:50:46'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'user',
+  details: 'Saldo: 100000',
+  level: 'info',
+  message: 'CHECK_BALANCE - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:47:39'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'user',
+  details: 'Saldo: 100000',
+  level: 'info',
+  message: 'CHECK_BALANCE - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:51:07'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'user',
+  details: 'Target: 6285921416239',
+  level: 'info',
+  message: 'CHECKING_SESSION - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 07:57:20'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'user',
+  details: 'Target: 6287722827168',
+  level: 'info',
+  message: 'CHECKING_SESSION - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 09:40:34'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'user',
+  details: 'Target: 6287722827168',
+  level: 'info',
+  message: 'CHECKING_SESSION - User: 6285727035336@s.whatsapp.net',
+  timestamp: '2025-07-21 10:11:11'
+}

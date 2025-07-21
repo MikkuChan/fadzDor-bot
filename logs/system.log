@@ -1,0 +1,320 @@
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 06:49:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 06:49:36'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 06:49:38'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 07:09:05'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 07:09:06'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 07:09:08'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 07:47:24'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 07:47:25'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 07:47:27'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 07:56:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 07:56:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 07:56:57'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 09:22:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 09:22:56'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 09:22:58'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 09:39:52'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 09:39:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 09:39:56'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 10:10:25'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 10:10:26'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 10:10:28'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 1)',
+  timestamp: '2025-07-21 14:06:54'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 2)',
+  timestamp: '2025-07-21 14:06:55'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'system',
+  error: "Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.",
+  stack: "TypeError: Cannot destructure property 'user' of '(0 , WABinary_1.jidDecode)(...)' as it is undefined.\n" +
+    '    at relayMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:265:17)\n' +
+    '    at Object.sendMessage (/root/fadzDor-bot/node_modules/baileys/lib/Socket/messages-send.js:678:23)\n' +
+    '    at async kirimPesan (/root/fadzDor-bot/bot.js:67:7)\n' +
+    '    at async handleConnectionUpdate (/root/fadzDor-bot/bot.js:191:7)',
+  level: 'error',
+  message: 'System Error - Sending message to 6285727035336 (attempt 3)',
+  timestamp: '2025-07-21 14:06:57'
+}

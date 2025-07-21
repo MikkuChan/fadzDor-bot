@@ -1,0 +1,194 @@
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  error: 'Request failed with status code 522',
+  response: null,
+  level: 'error',
+  message: 'API Error - GET /saldo - User: test-user',
+  timestamp: '2025-07-21 06:23:16'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: { status: false, message: 'Nomor tidak ditemukan!', data: [] },
+  level: 'info',
+  message: 'API Success - GET /cek_sesi_login - User: 628123456789',
+  timestamp: '2025-07-21 06:23:18'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: {
+    statusCode: 200,
+    status: false,
+    message: 'Terjadi kesalahan, pastikan nomor XL/AXIS/LIVEON yang kamu masukkan benar (terdaftar NIK & KK) dan mohon coba lagi! Error Message: User not found | Error Description: -',
+    data: []
+  },
+  level: 'info',
+  message: 'API Success - POST /get_otp - User: 628999999999',
+  timestamp: '2025-07-21 06:23:20'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: { status: true, message: 'Data ditemukan!', data: { saldo: 19628 } },
+  level: 'info',
+  message: 'API Success - GET /saldo - User: test-user',
+  timestamp: '2025-07-21 06:27:17'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: { status: false, message: 'Nomor tidak ditemukan!', data: [] },
+  level: 'info',
+  message: 'API Success - GET /cek_sesi_login - User: 628123456789',
+  timestamp: '2025-07-21 06:27:17'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: {
+    statusCode: 200,
+    status: true,
+    message: 'Berhasil mengirim kode OTP, silakan cek SMS di nomor XL kamu!',
+    data: {
+      auth_id: '539048cc-effa-4e10-8153-23757bb7b687',
+      can_resend_in: 60
+    }
+  },
+  level: 'info',
+  message: 'API Success - POST /get_otp - User: 6287722827168',
+  timestamp: '2025-07-21 06:27:23'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: { status: true, message: 'Data ditemukan!', data: { saldo: 19628 } },
+  level: 'info',
+  message: 'API Success - GET /saldo - User: health-check',
+  timestamp: '2025-07-21 06:29:35'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: {
+    statusCode: 200,
+    status: true,
+    message: 'Berhasil Login!',
+    data: { access_token: '643138:3e493d7c-94d2-483d-a3bc-c1b4999bd047' }
+  },
+  level: 'info',
+  message: 'API Success - GET /cek_sesi_login - User: 6287784054056',
+  timestamp: '2025-07-21 06:52:04'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: {
+    statusCode: 200,
+    status: true,
+    message: 'SUCCESS',
+    data: {
+      msisdn: '6287784054056',
+      text: 'Berikut ini adalah daftar paket/kuota kamu yang aktif saat ini untuk nomor XL 6287784054056. Penting: Mungkin paket tidak langsung muncul setelah beberapa detik pembelian paket, tunggu hingga 1 menitan dan klik ulang tombol Cek Paket untuk melihat update hasilnya.',
+      quotas: [
+        {
+          encrypted_package_code: '0UeMXOb8EgeECG3nbh5lmGEoQCbOZYyHl9lFfIGEImAZLNBSCpGS61nHPdYUAsx0PlHDAe6vSaVtJB5Gn4XuD1YPFjKZvfhiVDS7kvmKh-aVxZ2pMcq1H6Hs-oswfMFb',
+          name: 'Xtra Combo 5+10 VIP Double Youtube',
+          expired_at: '2025-08-15 23:59',
+          benefits: [
+            {
+              name: 'YouTube 24jam',
+              information: '',
+              quota: '20 GB',
+              remaining_quota: '19.41 GB'
+            },
+            {
+              name: '24jam di semua jaringan',
+              information: '',
+              quota: '10 GB',
+              remaining_quota: '2.89 GB'
+            },
+            {
+              name: 'Nelp (ke XL/Non-XL)',
+              information: '',
+              quota: '0 GB',
+              remaining_quota: '0 GB'
+            }
+          ]
+        }
+      ]
+    }
+  },
+  level: 'info',
+  message: 'API Success - GET /detail_paket - User: 6287784054056',
+  timestamp: '2025-07-21 06:52:07'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: {
+    status: true,
+    message: 'Berhasil login',
+    data: { access_token: '993098:08d39cfe-d65a-4432-99ac-eef3a2d25ca8' }
+  },
+  level: 'info',
+  message: 'API Success - GET /cek_sesi_login - User: 6285921416239',
+  timestamp: '2025-07-21 07:57:21'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: { status: false, message: 'Silahkan isi variabel dengan benar' },
+  level: 'info',
+  message: 'API Success - POST /beli/otp - User: 6285921416239',
+  timestamp: '2025-07-21 07:57:31'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  error: 'Request failed with status code 401',
+  response: null,
+  level: 'error',
+  message: 'API Error - GET /cek_sesi_login - User: 6287784054056',
+  timestamp: '2025-07-21 09:24:34'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  error: 'Request failed with status code 401',
+  response: null,
+  level: 'error',
+  message: 'API Error - GET /cek_sesi_login - User: 6287722827168',
+  timestamp: '2025-07-21 09:40:34'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  error: 'Request failed with status code 401',
+  response: null,
+  level: 'error',
+  message: 'API Error - POST /get_otp - User: 6287722827168',
+  timestamp: '2025-07-21 09:40:43'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: {
+    statusCode: 200,
+    status: true,
+    message: 'Berhasil Login!',
+    data: { access_token: '991787:4e9bdae5-4e9c-408e-b1c5-ac5e069b381a' }
+  },
+  level: 'info',
+  message: 'API Success - GET /cek_sesi_login - User: 6287722827168',
+  timestamp: '2025-07-21 10:11:14'
+}
+{
+  service: 'fadzDor-bot',
+  category: 'api',
+  response: { status: false, message: 'Silahkan isi variabel dengan benar' },
+  level: 'info',
+  message: 'API Success - POST /beli/otp - User: 6287722827168',
+  timestamp: '2025-07-21 10:11:21'
+}

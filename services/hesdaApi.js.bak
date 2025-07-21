@@ -1,0 +1,367 @@
+// services/hesdaApi.js
+const axios = require('axios');
+const FormData = require('form-data');
+const config = require('../config/config');
+const { logApiCall } = require('../utils/logger');
+const db = require('../utils/database');
+
+// Validasi input sederhana
+const validatePhoneNumber = (phoneNumber) => {
+  if (!phoneNumber || typeof phoneNumber !== 'string' || !/^\+?\d{10,15}$/.test(phoneNumber)) {
+    throw new Error('Nomor telepon tidak valid');
+  }
+};
+
+const validateRequired = (value, fieldName) => {
+  if (!value || typeof value !== 'string') {
+    throw new Error(`${fieldName} tidak valid atau kosong`);
+  }
+};
+
+const validatePaymentMethod = (paymentMethod, allowedMethods) => {
+  if (!paymentMethod || !allowedMethods.includes(paymentMethod)) {
+    throw new Error(`Metode pembayaran tidak valid. Pilih salah satu: ${allowedMethods.join(', ')}`);
+  }
+};
+
+const validatePrice = (price, fieldName) => {
+  const priceNum = parseInt(price);
+  if (!price || isNaN(priceNum) || priceNum <= 0) {
+    throw new Error(`${fieldName} harus berupa angka positif`);
+  }
+};
+
+class HesdaApiService {
+  constructor() {
+    this.baseUrl = config.api.baseUrl;
+    this.hesdaKey = config.api.hesdastore;
+    this.auth = {
+      username: config.api.hesdUsername,
+      password: config.api.hesdPassword,
+    };
+    this.callbackUrl = config.api.callbackUrl || 'https://your-app.com/callback';
+    this.apiClient = axios.create({
+      baseURL: this.baseUrl,
+      timeout: 10000,
+    });
+  }
+
+  getAuthHeaders() {
+    return {
+      Authorization: `Basic ${Buffer.from(`${this.auth.username}:${this.auth.password}`).toString('base64')}`,
+    };
+  }
+
+  async checkBalance(userPhone) {
+    try {
+      validatePhoneNumber(userPhone);
+      const response = await this.apiClient.get('/saldo', {
+        params: { hesdastore: this.hesdaKey },
+        headers: this.getAuthHeaders(),
+      });
+
+      logApiCall('/saldo', 'GET', userPhone, response.data);
+      return {
+        success: true,
+        saldo: response.data.data.saldo,
+      };
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Gagal mengecek saldo sistem';
+      logApiCall('/saldo', 'GET', userPhone, null, error);
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  }
+
+  async checkPackageDetail(phoneNumber, accessToken) {
+    try {
+      validatePhoneNumber(phoneNumber);
+      validateRequired(accessToken, 'Access Token');
+      const response = await this.apiClient.get('/detail_paket', {
+        params: {
+          hesdastore: this.hesdaKey,
+          access_token: accessToken,
+        },
+        headers: this.getAuthHeaders(),
+      });
+
+      logApiCall('/detail_paket', 'GET', phoneNumber, response.data);
+      return {
+        success: true,
+        data: response.data.data,
+      };
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Gagal mengecek detail paket';
+      logApiCall('/detail_paket', 'GET', phoneNumber, null, error);
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  }
+
+  async getOtp(phoneNumber) {
+    try {
+      validatePhoneNumber(phoneNumber);
+      const formData = new FormData();
+      formData.append('hesdastore', this.hesdaKey);
+      formData.append('no_hp', phoneNumber);
+      formData.append('metode', 'OTP');
+
+      const response = await this.apiClient.post('/get_otp', formData, {
+        headers: {
+          ...formData.getHeaders(),
+          ...this.getAuthHeaders(),
+        },
+      });
+
+      logApiCall('/get_otp', 'POST', phoneNumber, response.data);
+      if (response.data.status) {
+        return {
+          success: true,
+          authId: response.data.data.auth_id,
+          canResendIn: response.data.data.can_resend_in,
+          message: response.data.message,
+        };
+      }
+      return {
+        success: false,
+        message: response.data.message || 'Gagal meminta OTP',
+      };
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Gagal mengirim OTP';
+      logApiCall('/get_otp', 'POST', phoneNumber, null, error);
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  }
+
+  async loginSms(phoneNumber, authId, otpCode) {
+    try {
+      validatePhoneNumber(phoneNumber);
+      validateRequired(authId, 'Auth ID');
+      validateRequired(otpCode, 'Kode OTP');
+      const formData = new FormData();
+      formData.append('hesdastore', this.hesdaKey);
+      formData.append('no_hp', phoneNumber);
+      formData.append('metode', 'OTP');
+      formData.append('auth_id', authId);
+      formData.append('kode_otp', otpCode);
+
+      const response = await this.apiClient.post('/login_sms', formData, {
+        headers: {
+          ...formData.getHeaders(),
+          ...this.getAuthHeaders(),
+        },
+      });
+
+      logApiCall('/login_sms', 'POST', phoneNumber, response.data);
+      if (response.data.status) {
+        await db.saveSession(phoneNumber, response.data.data.access_token, authId);
+        return {
+          success: true,
+          accessToken: response.data.data.access_token,
+          message: response.data.message,
+        };
+      }
+      return {
+        success: false,
+        message: response.data.message || 'Gagal login dengan OTP',
+      };
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Gagal login dengan OTP';
+      logApiCall('/login_sms', 'POST', phoneNumber, null, error);
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  }
+
+  async checkLoginSession(phoneNumber) {
+    try {
+      validatePhoneNumber(phoneNumber);
+      const response = await this.apiClient.get('/cek_sesi_login', {
+        params: {
+          hesdastore: this.hesdaKey,
+          no_hp: phoneNumber,
+        },
+        headers: this.getAuthHeaders(),
+      });
+
+      logApiCall('/cek_sesi_login', 'GET', phoneNumber, response.data);
+      if (response.data.status) {
+        await db.saveSession(phoneNumber, response.data.data.access_token);
+        return {
+          success: true,
+          accessToken: response.data.data.access_token,
+          message: response.data.message,
+        };
+      }
+      return {
+        success: false,
+        message: response.data.message || 'Tidak ada sesi login aktif',
+      };
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Tidak ada sesi login aktif';
+      logApiCall('/cek_sesi_login', 'GET', phoneNumber, null, error);
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  }
+
+  async buyPackage(phoneNumber, packageId, accessToken, paymentMethod, price) {
+    try {
+      validatePhoneNumber(phoneNumber);
+      validateRequired(packageId, 'Package ID');
+      validateRequired(accessToken, 'Access Token');
+      validateRequired(paymentMethod, 'Payment Method');
+      validatePrice(price, 'Price');
+
+      // Daftar metode pembayaran yang diizinkan berdasarkan package_id
+      const packageDetails = {
+        'ZVdMVXcyKzdJRlJERVdJc1hpVUhmQQ': ['DANA', 'QRIS'], // XLUNLITURBOVIDIO_DANA
+        'MTJLR28vN3VpUmxObFdHelZwRnVUUQ': ['PULSA'], // XLUNLITURBOVIDIO_PULSA
+        'RjFNd09ZVWdsQVhQRHRQMWk0bnFxQQ': ['PULSA'], // MASA_AKTIF_XL_1TAHUN
+        'WjNMaVEyR0NoNG5SdUhHYWFLbU9RUQ': ['PULSA'], // XLUNLITURBOBASICXC_PULSA
+        'aCtmMVl2YldLZDcvRzhJNlQraTNZdw': ['PULSA'], // XLUNLITURBOSTANDARDXC_PULSA
+        'eUxzZE9Wa0dmdTdDT1RDeVFyOWJyZw': ['PULSA'], // XLUNLITURBOSUPERXC_PULSA
+        'UzhmQk5zam53SUZReWJ3c0poZ0xaQQ': ['PULSA'], // XLUNLITURBOPREMIUMXC_PULSA
+        'VlNxbzdGbDRtVnZHUmdwb284R2wzdw': ['PULSA'], // XLUNLITURBOJOOXXC_PULSA
+        'SDNuUmJBbWEvMnZSVFRCcEtzQlBFZw': ['PULSA'], // XLUNLITURBOYOUTUBEXC_PULSA
+        'MnFpMjJHaXhpU2pweUZ2WWRRM0tYZw': ['PULSA'], // XLUNLITURBONETFLIXXC_PULSA
+      };
+
+      const allowedMethods = packageDetails[packageId] || ['PULSA'];
+      validatePaymentMethod(paymentMethod, allowedMethods);
+
+      const formData = new FormData();
+      formData.append('hesdastore', this.hesdaKey);
+      formData.append('package_id', packageId);
+      formData.append('access_token', accessToken);
+      formData.append('uri', 'package_purchase_otp');
+      formData.append('no_hp', phoneNumber);
+      formData.append('payment_method', paymentMethod);
+      formData.append('url_callback', this.callbackUrl);
+      formData.append('price_or_fee', price);
+
+      logApiCall('/v2/beli/otp', 'POST', phoneNumber, {
+        params: {
+          hesdastore: this.hesdaKey,
+          package_id: packageId,
+          access_token: accessToken,
+          uri: 'package_purchase_otp',
+          no_hp: phoneNumber,
+          payment_method: paymentMethod,
+          url_callback: this.callbackUrl,
+          price_or_fee: price,
+        },
+      });
+
+      const response = await this.apiClient.post('/v2/beli/otp', formData, {
+        headers: {
+          ...formData.getHeaders(),
+          ...this.getAuthHeaders(),
+        },
+      });
+
+      logApiCall('/v2/beli/otp', 'POST', phoneNumber, response.data);
+      if (response.data.status) {
+        return {
+          success: true,
+          data: response.data.data,
+          message: response.data.message,
+          deeplinkData: response.data.data.deeplink_data || null,
+          qrisData: response.data.data.qris_data || null,
+        };
+      }
+      return {
+        success: false,
+        message: response.data.message || 'Gagal membeli paket',
+      };
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Gagal membeli paket';
+      logApiCall('/v2/beli/otp', 'POST', phoneNumber, null, {
+        error: errorMessage,
+        requestParams: {
+          hesdastore: this.hesdaKey,
+          package_id: packageId,
+          access_token: accessToken,
+          uri: 'package_purchase_otp',
+          no_hp: phoneNumber,
+          payment_method: paymentMethod,
+          url_callback: this.callbackUrl,
+          price_or_fee: price,
+        },
+      });
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  }
+
+  async checkTransactionStatus(trxId, userPhone) {
+    try {
+      validateRequired(trxId, 'Transaction ID');
+      validatePhoneNumber(userPhone);
+      const response = await this.apiClient.get('/cekStatus', {
+        params: {
+          hesdastore: this.hesdaKey,
+          trx_id: trxId,
+        },
+        headers: this.getAuthHeaders(),
+      });
+
+      logApiCall('/cekStatus', 'GET', userPhone, response.data);
+      if (response.data.status) {
+        return {
+          success: true,
+          data: response.data.data,
+        };
+      }
+      return {
+        success: false,
+        message: response.data.message || 'Gagal mengecek status transaksi',
+      };
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || error.message || 'Gagal mengecek status transaksi';
+      logApiCall('/cekStatus', 'GET', userPhone, null, error);
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  }
+
+  async getAccessToken(phoneNumber) {
+    try {
+      validatePhoneNumber(phoneNumber);
+      const sessionCheck = await this.checkLoginSession(phoneNumber);
+      if (sessionCheck.success) {
+        await db.updateSessionLastUsed(phoneNumber);
+        return sessionCheck;
+      }
+      return {
+        success: false,
+        needOtp: true,
+        message: 'Perlu verifikasi OTP untuk melanjutkan',
+      };
+    } catch (error) {
+      const errorMessage = error.message || 'Gagal memeriksa sesi login';
+      return {
+        success: false,
+        needOtp: true,
+        message: errorMessage,
+      };
+    }
+  }
+}
+
+module.exports = new HesdaApiService();

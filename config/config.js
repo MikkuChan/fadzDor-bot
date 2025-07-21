@@ -1,0 +1,65 @@
+// config/config.js
+require('dotenv').config();
+
+const config = {
+  // Bot Configuration
+  bot: {
+    prefix: '.',
+    name: 'fadzDor',
+    ownerNumber: process.env.OWNER_NUMBER || '6285727035336',
+    adminNumbers: process.env.ADMIN_NUMBERS ? process.env.ADMIN_NUMBERS.split(',') : [],
+  },
+  
+  // API Configuration
+  api: {
+    hesdaKey: process.env.HESDA_KEY,
+    hesdaUsername: process.env.HESDA_USERNAME,
+    hesdaPassword: process.env.HESDA_PASSWORD,
+    baseUrl: 'https://api.hesda-store.com/v2'
+  },
+  
+  // Package Configuration
+  packages: {
+    vidio_dana: {
+      package_id: 'ZVdMVXcyKzdJRlJERVdJc1hpVUhmQQ',
+      name: 'Paket Vidio Unlimited',
+      price: 4500,
+      cost: 1500,
+      description: '• Unlimited Turbo Vidio 30 Hari\n• FUP 100-150GB\n• Bisa untuk VPN\n• Pembayaran via DANA/QRIS',
+      payment_method: ['DANA', 'QRIS']
+    },
+    vidio_pulsa: {
+      package_id: 'MTJLR28vN3VpUmxObFdHelZwRnVUUQ',
+      name: 'Paket Vidio Unlimited',
+      price: 4500,
+      cost: 1500,
+      description: '• Unlimited Turbo Vidio 30 Hari\n• FUP 100-150GB\n• Bisa untuk VPN\n• Pembayaran via Pulsa',
+      payment_method: ['PULSA']
+    },
+   v1turbo: {
+      package_id: 'aCtmMVl2YldLZDcvRzhJNlQraTNZdw',
+      name: 'V1 Addon Xtra Combo Unlimited Turbo Standard',
+      price: 500,
+      cost: 0,
+      description: '• Wajib Unreg Semua Paket Xtra Combo via *808*7*1*3#\n• Xtra Unlimited Turbo Standard untuk akses LINE, Gojek, dan Facebook secara Unlimited dengan Kuota WhatsApp Harian 50MB/hari.\n• Mengikuti masa aktif paket Xtra Combo.\n• Tidak dapat diakumulasi.\n• Cek MyXL untuk status paket.\n• Pastikan pulsa < Rp. 20.000.',
+      payment_method: ['PULSA']
+    },
+    masa_aktif: {
+      package_id: 'RjFNd09ZVWdsQVhQRHRQMWk0bnFxQQ',
+      name: 'Masa Aktif 1 Tahun',
+      price: 10000,
+      cost: 5000,
+      description: '• Masa Aktif 1 Tahun (45GB)\n• Diperpanjang per bulan\n• Pembayaran via Pulsa',
+      payment_method: ['PULSA']
+    }
+  },
+  
+  // Database files
+  database: {
+    users: './data/users.json',
+    transactions: './data/transactions.json',
+    sessions: './data/sessions.json'
+  }
+};
+
+module.exports = config;

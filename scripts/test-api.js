@@ -1,0 +1,61 @@
+// scripts/test-api.js
+// Script untuk testing API Hesda Store
+require('dotenv').config();
+
+const hesdaApi = require('../services/hesdaApi');
+
+async function testApi() {
+  console.log('🧪 Testing fadzDor Bot API Connection...\n');
+  
+  // Test 1: Check System Balance
+  console.log('1. Testing system balance check...');
+  try {
+    const balanceResult = await hesdaApi.checkBalance('test-user');
+    if (balanceResult.success) {
+      console.log(`✅ System balance: Rp. ${balanceResult.saldo.toLocaleString('id-ID')}`);
+    } else {
+      console.log(`❌ Failed to check balance: ${balanceResult.message}`);
+    }
+  } catch (error) {
+    console.log(`❌ Error checking balance: ${error.message}`);
+  }
+  
+  console.log('');
+  
+  // Test 2: Check Login Session (should fail for non-existent number)
+  console.log('2. Testing login session check...');
+  try {
+    const sessionResult = await hesdaApi.checkLoginSession('628123456789');
+    if (sessionResult.success) {
+      console.log('✅ Found active session');
+    } else {
+      console.log('ℹ️ No active session (expected for test number)');
+    }
+  } catch (error) {
+    console.log(`❌ Error checking session: ${error.message}`);
+  }
+  
+  console.log('');
+  
+  // Test 3: Get OTP (should fail for invalid number)
+  console.log('3. Testing OTP request (with invalid number)...');
+  try {
+    const otpResult = await hesdaApi.getOtp('6287722827168');
+    if (otpResult.success) {
+      console.log('✅ OTP sent successfully');
+    } else {
+      console.log(`ℹ️ OTP failed (expected): ${otpResult.message}`);
+    }
+  } catch (error) {
+    console.log(`❌ Error requesting OTP: ${error.message}`);
+  }
+  
+  console.log('\n🏁 API Test completed!');
+  console.log('\n📝 Notes:');
+  console.log('- Make sure your .env file is configured correctly');
+  console.log('- Some tests are expected to fail with test data');
+  console.log('- If system balance check fails, verify your API credentials');
+}
+
+// Run the test
+testApi().catch(console.error);

@@ -1,0 +1,607 @@
+// handlers/packageManager.js
+// Package CRUD Management untuk Admin
+
+const db = require('../utils/database');
+const config = require('../config/config');
+const { logAdminAction, logSystemError } = require('../utils/logger');
+
+class PackageManager {
+  
+  // Lihat semua paket (admin)
+  static async listAllPackages(sock, sender) {
+    try {
+      // Get packages from database (jika ada)
+      let packages = {};
+      try {
+        packages = await db.getPackages();
+      } catch (error) {
+        // Fallback ke config jika database belum ada paket
+        packages = config.packages;
+      }
+
+      if (Object.keys(packages).length === 0) {
+        await sock.sendMessage(sender, { 
+          text: '📦 *Daftar Paket*\n\nBelum ada paket yang tersedia.\n\nGunakan `.addpaket` untuk menambah paket baru.' 
+        });
+        return;
+      }
+
+      let message = `📦 *Daftar Semua Paket*\n\n`;
+      
+      let index = 1;
+      for (const [code, pkg] of Object.entries(packages)) {
+        const status = pkg.active !== false ? '🟢 Aktif' : '🔴 Nonaktif';
+        const profit = pkg.price - pkg.cost;
+        const margin = pkg.price > 0 ? Math.round((profit / pkg.price) * 100) : 0;
+        
+        message += `*${index}. ${pkg.name}*\n`;
+        message += `📋 Code: \`${code}\`\n`;
+        message += `💰 Harga: Rp.${pkg.price.toLocaleString('id-ID')}\n`;
+        message += `🏭 Modal: Rp.${pkg.cost.toLocaleString('id-ID')}\n`;
+        message += `📈 Profit: Rp.${profit.toLocaleString('id-ID')} (${margin}%)\n`;
+        message += `🆔 Package ID: \`${pkg.package_id}\`\n`;
+        message += `${status}\n`;
+        message += `📅 Update: ${new Date(pkg.updatedAt || Date.now()).toLocaleDateString('id-ID')}\n\n`;
+        index++;
+      }
+
+      message += `💡 *Commands:*\n`;
+      message += `• \`.addpaket\` - Tambah paket baru\n`;
+      message += `• \`.editpaket [code]\` - Edit paket\n`;
+      message += `• \`.delpaket [code]\` - Hapus paket\n`;
+      message += `• \`.togglepaket [code]\` - Aktif/nonaktif paket`;
+
+      await sock.sendMessage(sender, { text: message });
+      logAdminAction('LIST_PACKAGES', sender, '', `Total: ${Object.keys(packages).length}`);
+      
+    } catch (error) {
+      logSystemError(error, 'Listing packages');
+      await sock.sendMessage(sender, { 
+        text: '❌ Gagal mengambil daftar paket.' 
+      });
+    }
+  }
+
+  // Tambah paket baru
+  static async startAddPackage(sock, sender, userStates) {
+    userStates.set(sender, {
+      type: 'add_package',
+      step: 'code',
+      packageData: {}
+    });
+
+    const message = `📦 *Tambah Paket Baru*\n\n` +
+      `**Step 1/7:** Masukkan kode paket\n` +
+      `Contoh: \`vidio_premium\`, \`masa_aktif_6bulan\`\n\n` +
+      `💡 Gunakan format: huruf_kecil_dengan_underscore\n` +
+      `Ketik *batal* untuk membatalkan`;
+
+    await sock.sendMessage(sender, { text: message });
+  }
+
+  // Process add package steps
+  static async processAddPackage(sock, sender, input, state, userStates) {
+    if (input.toLowerCase() === 'batal') {
+      userStates.delete(sender);
+      return await sock.sendMessage(sender, { text: '❌ Penambahan paket dibatalkan.' });
+    }
+
+    const { step, packageData } = state;
+
+    switch (step) {
+      case 'code':
+        // Validasi kode paket
+        const code = input.toLowerCase().replace(/[^a-z0-9_]/g, '');
+        if (!code || code.length < 3) {
+          return await sock.sendMessage(sender, { 
+            text: '❌ Kode paket tidak valid. Minimal 3 karakter, gunakan huruf dan underscore.\n\nContoh: `vidio_premium`' 
+          });
+        }
+
+        // Cek apakah kode sudah ada
+        const existingPackages = await db.getPackages();
+        if (existingPackages[code] || config.packages[code]) {
+          return await sock.sendMessage(sender, { 
+            text: `❌ Kode paket \`${code}\` sudah ada. Gunakan kode yang berbeda.` 
+          });
+        }
+
+        packageData.code = code;
+        userStates.set(sender, { ...state, step: 'name', packageData });
+        
+        return await sock.sendMessage(sender, { 
+          text: `**Step 2/7:** Masukkan nama paket\n\nContoh: "Paket Internet Unlimited Premium"\n\nKode: \`${code}\`` 
+        });
+
+      case 'name':
+        if (!input.trim() || input.length < 5) {
+          return await sock.sendMessage(sender, { 
+            text: '❌ Nama paket terlalu pendek. Minimal 5 karakter.' 
+          });
+        }
+
+        packageData.name = input.trim();
+        userStates.set(sender, { ...state, step: 'price', packageData });
+        
+        return await sock.sendMessage(sender, { 
+          text: `**Step 3/7:** Masukkan harga jual (untuk user)\n\nContoh: 15000\n\nNama: "${packageData.name}"` 
+        });
+
+      case 'price':
+        const price = parseInt(input.replace(/\D/g, ''));
+        if (isNaN(price) || price < 1000) {
+          return await sock.sendMessage(sender, { 
+            text: '❌ Harga tidak valid. Minimal Rp.1.000\n\nContoh: 15000' 
+          });
+        }
+
+        packageData.price = price;
+        userStates.set(sender, { ...state, step: 'cost', packageData });
+        
+        return await sock.sendMessage(sender, { 
+          text: `**Step 4/7:** Masukkan harga modal (dari provider)\n\nContoh: 10000\n\nHarga jual: Rp.${price.toLocaleString('id-ID')}` 
+        });
+
+      case 'cost':
+        const cost = parseInt(input.replace(/\D/g, ''));
+        if (isNaN(cost) || cost < 0) {
+          return await sock.sendMessage(sender, { 
+            text: '❌ Harga modal tidak valid.\n\nContoh: 10000' 
+          });
+        }
+
+        if (cost >= packageData.price) {
+          return await sock.sendMessage(sender, { 
+            text: `❌ Harga modal (${cost.toLocaleString('id-ID')}) tidak boleh >= harga jual (${packageData.price.toLocaleString('id-ID')})` 
+          });
+        }
+
+        packageData.cost = cost;
+        userStates.set(sender, { ...state, step: 'package_id', packageData });
+        
+        const profit = packageData.price - cost;
+        return await sock.sendMessage(sender, { 
+          text: `**Step 5/7:** Masukkan Package ID dari Hesda Store\n\nContoh: ZVdMVXcyKzdJRlJERVdJc1hpVUhmQQ\n\n💰 Profit: Rp.${profit.toLocaleString('id-ID')}` 
+        });
+
+      case 'package_id':
+        if (!input.trim() || input.length < 10) {
+          return await sock.sendMessage(sender, { 
+            text: '❌ Package ID tidak valid. Pastikan ID dari Hesda Store benar.' 
+          });
+        }
+
+        packageData.package_id = input.trim();
+        userStates.set(sender, { ...state, step: 'description', packageData });
+        
+        return await sock.sendMessage(sender, { 
+          text: `**Step 6/7:** Masukkan deskripsi paket\n\nContoh:\n• Internet unlimited 30 hari\n• FUP 100GB\n• Bisa untuk streaming\n\nPackage ID: \`${packageData.package_id}\`` 
+        });
+
+      case 'description':
+        if (!input.trim() || input.length < 10) {
+          return await sock.sendMessage(sender, { 
+            text: '❌ Deskripsi terlalu pendek. Minimal 10 karakter.' 
+          });
+        }
+
+        packageData.description = input.trim();
+        userStates.set(sender, { ...state, step: 'payment_method', packageData });
+        
+        return await sock.sendMessage(sender, { 
+          text: `**Step 7/7:** Pilih metode pembayaran\n\n1. DANA\n2. QRIS\n3. PULSA\n4. DANA+QRIS\n5. DANA+QRIS+PULSA\n\nKetik nomor pilihan (1-5):` 
+        });
+
+      case 'payment_method':
+        const paymentOptions = {
+          '1': ['DANA'],
+          '2': ['QRIS'], 
+          '3': ['PULSA'],
+          '4': ['DANA', 'QRIS'],
+          '5': ['DANA', 'QRIS', 'PULSA']
+        };
+
+        if (!paymentOptions[input]) {
+          return await sock.sendMessage(sender, { 
+            text: '❌ Pilihan tidak valid. Ketik nomor 1-5.' 
+          });
+        }
+
+        packageData.payment_method = paymentOptions[input];
+        userStates.set(sender, { ...state, step: 'confirm', packageData });
+        
+        const profit = packageData.price - packageData.cost;
+        const margin = Math.round((profit / packageData.price) * 100);
+        
+        const confirmMessage = `✅ *Konfirmasi Paket Baru*\n\n` +
+          `📋 **Kode:** \`${packageData.code}\`\n` +
+          `📦 **Nama:** ${packageData.name}\n` +
+          `💰 **Harga:** Rp.${packageData.price.toLocaleString('id-ID')}\n` +
+          `🏭 **Modal:** Rp.${packageData.cost.toLocaleString('id-ID')}\n` +
+          `📈 **Profit:** Rp.${profit.toLocaleString('id-ID')} (${margin}%)\n` +
+          `🆔 **Package ID:** \`${packageData.package_id}\`\n` +
+          `💳 **Payment:** ${packageData.payment_method.join(', ')}\n` +
+          `📝 **Deskripsi:** ${packageData.description}\n\n` +
+          `Ketik *ya* untuk simpan atau *batal* untuk membatalkan`;
+        
+        return await sock.sendMessage(sender, { text: confirmMessage });
+
+      case 'confirm':
+        if (input.toLowerCase() !== 'ya') {
+          return await sock.sendMessage(sender, { 
+            text: 'Ketik *ya* untuk konfirmasi atau *batal* untuk membatalkan.' 
+          });
+        }
+
+        // Simpan paket
+        try {
+          const newPackage = {
+            ...packageData,
+            active: true,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          };
+
+          await db.savePackage(newPackage);
+          
+          // Update config runtime juga
+          config.packages[packageData.code] = newPackage;
+
+          userStates.delete(sender);
+          
+          logAdminAction('ADD_PACKAGE', sender, packageData.code, `Name: ${packageData.name}, Price: ${packageData.price}`);
+
+          return await sock.sendMessage(sender, { 
+            text: `✅ *Paket Berhasil Ditambahkan!*\n\n📦 **${packageData.name}**\n📋 Kode: \`${packageData.code}\`\n💰 Harga: Rp.${packageData.price.toLocaleString('id-ID')}\n\nPaket sudah aktif dan bisa dibeli user.` 
+          });
+
+        } catch (error) {
+          logSystemError(error, 'Saving new package');
+          userStates.delete(sender);
+          return await sock.sendMessage(sender, { 
+            text: '❌ Gagal menyimpan paket. Silakan coba lagi.' 
+          });
+        }
+
+      default:
+        userStates.delete(sender);
+        return await sock.sendMessage(sender, { text: '❌ Error: Step tidak dikenal.' });
+    }
+  }
+
+  // Edit paket existing
+  static async startEditPackage(sock, sender, packageCode, userStates) {
+    try {
+      if (!packageCode) {
+        return await sock.sendMessage(sender, { 
+          text: `❌ *Format salah*\n\nGunakan: \`.editpaket [kode]\`\n\nContoh: \`.editpaket vidio_dana\`\n\nLihat kode paket: \`.listpaket\`` 
+        });
+      }
+
+      // Cek apakah paket ada
+      const packages = await db.getPackages();
+      const existingPackage = packages[packageCode] || config.packages[packageCode];
+      
+      if (!existingPackage) {
+        return await sock.sendMessage(sender, { 
+          text: `❌ *Paket tidak ditemukan*\n\nKode: \`${packageCode}\`\n\nLihat semua paket: \`.listpaket\`` 
+        });
+      }
+
+      userStates.set(sender, {
+        type: 'edit_package',
+        packageCode: packageCode,
+        originalPackage: existingPackage,
+        step: 'menu'
+      });
+
+      const profit = existingPackage.price - existingPackage.cost;
+      const margin = Math.round((profit / existingPackage.price) * 100);
+      
+      const message = `✏️ *Edit Paket: ${existingPackage.name}*\n\n` +
+        `📋 **Data Saat Ini:**\n` +
+        `• Kode: \`${packageCode}\`\n` +
+        `• Nama: ${existingPackage.name}\n` +
+        `• Harga: Rp.${existingPackage.price.toLocaleString('id-ID')}\n` +
+        `• Modal: Rp.${existingPackage.cost.toLocaleString('id-ID')}\n` +
+        `• Profit: Rp.${profit.toLocaleString('id-ID')} (${margin}%)\n` +
+        `• Status: ${existingPackage.active !== false ? '🟢 Aktif' : '🔴 Nonaktif'}\n\n` +
+        `**Pilih yang ingin diedit:**\n` +
+        `1. Nama paket\n` +
+        `2. Harga jual\n` +
+        `3. Harga modal\n` +
+        `4. Deskripsi\n` +
+        `5. Metode pembayaran\n` +
+        `6. Status aktif/nonaktif\n\n` +
+        `Ketik nomor (1-6) atau *batal*`;
+
+      await sock.sendMessage(sender, { text: message });
+      
+    } catch (error) {
+      logSystemError(error, 'Starting edit package');
+      await sock.sendMessage(sender, { 
+        text: '❌ Gagal memulai edit paket.' 
+      });
+    }
+  }
+
+  // Process edit package
+  static async processEditPackage(sock, sender, input, state, userStates) {
+    if (input.toLowerCase() === 'batal') {
+      userStates.delete(sender);
+      return await sock.sendMessage(sender, { text: '❌ Edit paket dibatalkan.' });
+    }
+
+    const { step, packageCode, originalPackage } = state;
+
+    if (step === 'menu') {
+      const editOptions = {
+        '1': 'name',
+        '2': 'price', 
+        '3': 'cost',
+        '4': 'description',
+        '5': 'payment_method',
+        '6': 'status'
+      };
+
+      const selectedField = editOptions[input];
+      if (!selectedField) {
+        return await sock.sendMessage(sender, { 
+          text: '❌ Pilihan tidak valid. Ketik nomor 1-6.' 
+        });
+      }
+
+      userStates.set(sender, { ...state, step: 'edit_field', field: selectedField });
+
+      const prompts = {
+        name: `Nama saat ini: "${originalPackage.name}"\n\nMasukkan nama baru:`,
+        price: `Harga saat ini: Rp.${originalPackage.price.toLocaleString('id-ID')}\n\nMasukkan harga baru:`,
+        cost: `Modal saat ini: Rp.${originalPackage.cost.toLocaleString('id-ID')}\n\nMasukkan modal baru:`,
+        description: `Deskripsi saat ini:\n"${originalPackage.description}"\n\nMasukkan deskripsi baru:`,
+        payment_method: `Metode saat ini: ${originalPackage.payment_method?.join(', ')}\n\nPilih metode baru:\n1. DANA\n2. QRIS\n3. PULSA\n4. DANA+QRIS\n5. DANA+QRIS+PULSA`,
+        status: `Status saat ini: ${originalPackage.active !== false ? 'Aktif' : 'Nonaktif'}\n\nKetik:\n• *aktif* untuk mengaktifkan\n• *nonaktif* untuk menonaktifkan`
+      };
+
+      return await sock.sendMessage(sender, { text: prompts[selectedField] });
+    }
+
+    if (step === 'edit_field') {
+      const { field } = state;
+      let newValue;
+      let isValid = true;
+      let errorMessage = '';
+
+      // Validasi input berdasarkan field
+      switch (field) {
+        case 'name':
+          if (!input.trim() || input.length < 5) {
+            isValid = false;
+            errorMessage = 'Nama paket terlalu pendek. Minimal 5 karakter.';
+          } else {
+            newValue = input.trim();
+          }
+          break;
+
+        case 'price':
+          const price = parseInt(input.replace(/\D/g, ''));
+          if (isNaN(price) || price < 1000) {
+            isValid = false;
+            errorMessage = 'Harga tidak valid. Minimal Rp.1.000';
+          } else if (price <= originalPackage.cost) {
+            isValid = false;
+            errorMessage = `Harga jual (${price.toLocaleString('id-ID')}) harus > modal (${originalPackage.cost.toLocaleString('id-ID')})`;
+          } else {
+            newValue = price;
+          }
+          break;
+
+        case 'cost':
+          const cost = parseInt(input.replace(/\D/g, ''));
+          if (isNaN(cost) || cost < 0) {
+            isValid = false;
+            errorMessage = 'Harga modal tidak valid.';
+          } else if (cost >= originalPackage.price) {
+            isValid = false;
+            errorMessage = `Harga modal (${cost.toLocaleString('id-ID')}) harus < harga jual (${originalPackage.price.toLocaleString('id-ID')})`;
+          } else {
+            newValue = cost;
+          }
+          break;
+
+        case 'description':
+          if (!input.trim() || input.length < 10) {
+            isValid = false;
+            errorMessage = 'Deskripsi terlalu pendek. Minimal 10 karakter.';
+          } else {
+            newValue = input.trim();
+          }
+          break;
+
+        case 'payment_method':
+          const paymentOptions = {
+            '1': ['DANA'],
+            '2': ['QRIS'],
+            '3': ['PULSA'],
+            '4': ['DANA', 'QRIS'],
+            '5': ['DANA', 'QRIS', 'PULSA']
+          };
+
+          if (!paymentOptions[input]) {
+            isValid = false;
+            errorMessage = 'Pilihan tidak valid. Ketik nomor 1-5.';
+          } else {
+            newValue = paymentOptions[input];
+          }
+          break;
+
+        case 'status':
+          if (input.toLowerCase() === 'aktif') {
+            newValue = true;
+          } else if (input.toLowerCase() === 'nonaktif') {
+            newValue = false;
+          } else {
+            isValid = false;
+            errorMessage = 'Ketik "aktif" atau "nonaktif".';
+          }
+          break;
+      }
+
+      if (!isValid) {
+        return await sock.sendMessage(sender, { text: `❌ ${errorMessage}` });
+      }
+
+      // Konfirmasi perubahan
+      userStates.set(sender, { ...state, step: 'confirm', field, newValue });
+
+      const oldValueDisplay = {
+        name: originalPackage.name,
+        price: `Rp.${originalPackage.price.toLocaleString('id-ID')}`,
+        cost: `Rp.${originalPackage.cost.toLocaleString('id-ID')}`,
+        description: originalPackage.description,
+        payment_method: originalPackage.payment_method?.join(', '),
+        status: originalPackage.active !== false ? 'Aktif' : 'Nonaktif'
+      };
+
+      const newValueDisplay = {
+        name: newValue,
+        price: `Rp.${newValue.toLocaleString('id-ID')}`,
+        cost: `Rp.${newValue.toLocaleString('id-ID')}`,
+        description: newValue,
+        payment_method: Array.isArray(newValue) ? newValue.join(', ') : newValue,
+        status: newValue ? 'Aktif' : 'Nonaktif'
+      };
+
+      const confirmMessage = `✅ *Konfirmasi Perubahan*\n\n` +
+        `📦 **Paket:** ${originalPackage.name}\n` +
+        `📋 **Field:** ${field}\n\n` +
+        `**Nilai Lama:** ${oldValueDisplay[field]}\n` +
+        `**Nilai Baru:** ${newValueDisplay[field]}\n\n` +
+        `Ketik *ya* untuk simpan atau *batal* untuk membatalkan`;
+
+      return await sock.sendMessage(sender, { text: confirmMessage });
+    }
+
+    if (step === 'confirm') {
+      if (input.toLowerCase() !== 'ya') {
+        return await sock.sendMessage(sender, { 
+          text: 'Ketik *ya* untuk konfirmasi atau *batal* untuk membatalkan.' 
+        });
+      }
+
+      // Simpan perubahan
+      try {
+        const packages = await db.getPackages();
+        const updatedPackage = { 
+          ...originalPackage,
+          [state.field]: state.newValue,
+          updatedAt: new Date().toISOString()
+        };
+
+        await db.savePackage(updatedPackage);
+        
+        // Update config runtime
+        config.packages[packageCode] = updatedPackage;
+
+        userStates.delete(sender);
+        
+        logAdminAction('EDIT_PACKAGE', sender, packageCode, `Field: ${state.field}, New: ${state.newValue}`);
+
+        return await sock.sendMessage(sender, { 
+          text: `✅ *Paket Berhasil Diupdate!*\n\n📦 **${updatedPackage.name}**\n📋 Field: ${state.field}\n🔄 Perubahan telah disimpan.` 
+        });
+
+      } catch (error) {
+        logSystemError(error, 'Updating package');
+        userStates.delete(sender);
+        return await sock.sendMessage(sender, { 
+          text: '❌ Gagal menyimpan perubahan. Silakan coba lagi.' 
+        });
+      }
+    }
+  }
+
+  // Hapus paket
+  static async deletePackage(sock, sender, packageCode) {
+    try {
+      if (!packageCode) {
+        return await sock.sendMessage(sender, { 
+          text: `❌ *Format salah*\n\nGunakan: \`.delpaket [kode]\`\n\nContoh: \`.delpaket vidio_dana\`\n\nLihat kode paket: \`.listpaket\`` 
+        });
+      }
+
+      // Cek apakah paket ada
+      const packages = await db.getPackages();
+      const existingPackage = packages[packageCode] || config.packages[packageCode];
+      
+      if (!existingPackage) {
+        return await sock.sendMessage(sender, { 
+          text: `❌ *Paket tidak ditemukan*\n\nKode: \`${packageCode}\`\n\nLihat semua paket: \`.listpaket\`` 
+        });
+      }
+
+      // Hapus dari database
+      await db.deletePackage(packageCode);
+      
+      // Hapus dari config runtime
+      delete config.packages[packageCode];
+
+      logAdminAction('DELETE_PACKAGE', sender, packageCode, `Name: ${existingPackage.name}`);
+
+      return await sock.sendMessage(sender, { 
+        text: `✅ *Paket Berhasil Dihapus!*\n\n📦 **${existingPackage.name}**\n📋 Kode: \`${packageCode}\`\n\n⚠️ Paket tidak lagi tersedia untuk user.` 
+      });
+
+    } catch (error) {
+      logSystemError(error, 'Deleting package');
+      return await sock.sendMessage(sender, { 
+        text: '❌ Gagal menghapus paket. Silakan coba lagi.' 
+      });
+    }
+  }
+
+  // Toggle status paket (aktif/nonaktif)
+  static async togglePackageStatus(sock, sender, packageCode) {
+    try {
+      if (!packageCode) {
+        return await sock.sendMessage(sender, { 
+          text: `❌ *Format salah*\n\nGunakan: \`.togglepaket [kode]\`\n\nContoh: \`.togglepaket vidio_dana\`` 
+        });
+      }
+
+      const packages = await db.getPackages();
+      const existingPackage = packages[packageCode] || config.packages[packageCode];
+      
+      if (!existingPackage) {
+        return await sock.sendMessage(sender, { 
+          text: `❌ *Paket tidak ditemukan*\n\nKode: \`${packageCode}\`` 
+        });
+      }
+
+      const newStatus = !(existingPackage.active !== false);
+      const updatedPackage = {
+        ...existingPackage,
+        active: newStatus,
+        updatedAt: new Date().toISOString()
+      };
+
+      await db.savePackage(updatedPackage);
+      config.packages[packageCode] = updatedPackage;
+
+      const statusText = newStatus ? '🟢 Diaktifkan' : '🔴 Dinonaktifkan';
+      
+      logAdminAction('TOGGLE_PACKAGE', sender, packageCode, `Status: ${newStatus}`);
+
+      return await sock.sendMessage(sender, { 
+        text: `✅ *Status Paket Diupdate!*\n\n📦 **${existingPackage.name}**\n📋 Kode: \`${packageCode}\`\n🔄 Status: ${statusText}` 
+      });
+
+    } catch (error) {
+      logSystemError(error, 'Toggling package status');
+      return await sock.sendMessage(sender, { 
+        text: '❌ Gagal mengubah status paket.' 
+      });
+    }
+  }
+}
+
+module.exports = PackageManager;
